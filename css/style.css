@@ -3,13 +3,13 @@
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    width: 320px;
-    height: 320px;
+    width: 400px;
+    height: 400px;
 }
 .box{
   margin:1px;
   float: left;
-  width: 30px;
-  height: 30px;
+  width: 18px;
+  height: 18px;
   background-color: #FF0000;
 }
