@@ -20,7 +20,7 @@ $(document).ready(function(){
   $('div').on('mouseenter', '.box', function(){
     $(this).css({'background-color': '#F7D72A'});
   });
-//reset sketchpad
+//reset sketchpad on button click
   $('#resetSketch').on('click', function(){
     $('.box').css({'background-color': '#EDEDED'});
   });
