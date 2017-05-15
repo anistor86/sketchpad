@@ -11,11 +11,15 @@ $(document).ready(function(){
     $('.box').css({'height': checkSize(numBox), 'width': checkSize(numBox)});
   }
 
-  //check the number of boxes and resize them 
+  //check the number of boxes and resize them
   function checkSize(numBox){
     var size = (400 - (numBox * 2)) / numBox;
     return size;
   }
+//color the boxes on mouse over
+  $('div').on('mouseenter', '.box', function(){
+    $(this).css({'background-color': '#F7D72A'})
+  });
 
-createGrid(2);
+  createGrid(16);
 });
