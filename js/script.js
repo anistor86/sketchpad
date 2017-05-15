@@ -18,7 +18,11 @@ $(document).ready(function(){
   }
 //color the boxes on mouse over
   $('div').on('mouseenter', '.box', function(){
-    $(this).css({'background-color': '#F7D72A'})
+    $(this).css({'background-color': '#F7D72A'});
+  });
+//reset sketchpad
+  $('#resetSketch').on('click', function(){
+    $('.box').css({'background-color': '#EDEDED'});
   });
 
   createGrid(16);
