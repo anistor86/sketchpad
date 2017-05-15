@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+  var numBox = 16;
   //Create the grid and resize the boxes
   function createGrid(numBox){
     var box = '<div class="box"></div>';
@@ -20,10 +20,26 @@ $(document).ready(function(){
   $('div').on('mouseenter', '.box', function(){
     $(this).css({'background-color': '#F7D72A'});
   });
-//reset sketchpad on button click
-  $('#resetSketch').on('click', function(){
-    $('.box').css({'background-color': '#EDEDED'});
+
+//change grid size with prompt
+  $('#gridSize').on('click', function(){
+    numBox = prompt('Choose a number from 1 to 64!');
+    console.log(numBox);
+    if(numBox < 1 || numBox > 64){
+      numBox = 16;
+    }
+    resetGrid();
+    $('.box').remove();
+    createGrid(numBox);
   });
 
-  createGrid(16);
+//reset sketchpad on button click
+  function resetGrid(){
+    $('.box').css({'background-color': '#EDEDED'});
+  }
+  $('#resetSketch').on('click', resetGrid);
+
+
+
+  createGrid(numBox);
 });
