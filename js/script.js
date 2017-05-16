@@ -17,23 +17,23 @@ $(document).ready(function(){
     $(this).css({'background-color': '#F7D72A'});
   });
 
-  //yellow color Sketchpad
-      $('#yellow').on('click', function(){
-        resetGrid();
-        $('div').on('mouseenter', '.box', function(event){
-          event.stopPropagation();
-          $(this).css({'background-color': '#F7D72A'});
-        });
-      });
-    //raimbow color Sketchpad
-      $('#randomColor').on('click', function(){
-        resetGrid();
-        $('div').on('mouseenter', '.box', function(event){
-          event.stopPropagation();
-          var randomColor = 'rgb(' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ')';
-          $(this).css({'background-color': randomColor});
-        });
-      });
+//yellow color Sketchpad
+  $('#yellow').on('click', function(){
+    resetGrid();
+    $('div').on('mouseenter', '.box', function(event){
+      event.stopPropagation();
+      $(this).css({'background-color': '#F7D72A'});
+    });
+  });
+//raimbow color Sketchpad
+  $('#randomColor').on('click', function(){
+    resetGrid();
+    $('div').on('mouseenter', '.box', function(event){
+      event.stopPropagation();
+      var randomColor = 'rgb(' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ')';
+      $(this).css({'background-color': randomColor});
+    });
+  });
 
 //change grid size with prompt
   $('#gridSize').on('click', function(){
@@ -53,6 +53,22 @@ $(document).ready(function(){
     $('.box').off();
   }
 
+//greyscale color Sketchpad
+  $('#darkerColor').on('click', function(){
+    resetGrid();
+    var color = 250;
+    $('div').on('mouseenter', '.box', function(event){
+      event.stopPropagation();
+      if(color > 0){
+        color -= 25;
+        $(this).css({'background-color': 'rgb('+ color +','+ color +','+ color +')'});
+      }else{
+        $(this).css({'background-color': 'rgb('+ color +','+ color +','+ color +')'});
+        color = 250;
+      }
+
+    });
+  });
 
   createGrid(numBox);
 });
