@@ -8,37 +8,50 @@ $(document).ready(function(){
         $('#container').append('<div class="box"></div>');
       }
     }
-    $('.box').css({'height': checkSize(numBox), 'width': checkSize(numBox)});
+    var size = (400 - (numBox * 2)) / numBox;
+    $('.box').css({'height': size, 'width': size});
   }
 
-  //check the number of boxes and resize them
-  function checkSize(numBox){
-    var size = (400 - (numBox * 2)) / numBox;
-    return size;
-  }
 //color the boxes on mouse over
   $('div').on('mouseenter', '.box', function(){
     $(this).css({'background-color': '#F7D72A'});
   });
 
+  //yellow color Sketchpad
+      $('#yellow').on('click', function(){
+        resetGrid();
+        $('div').on('mouseenter', '.box', function(event){
+          event.stopPropagation();
+          $(this).css({'background-color': '#F7D72A'});
+        });
+      });
+    //raimbow color Sketchpad
+      $('#randomColor').on('click', function(){
+        resetGrid();
+        $('div').on('mouseenter', '.box', function(event){
+          event.stopPropagation();
+          var randomColor = 'rgb(' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ')';
+          $(this).css({'background-color': randomColor});
+        });
+      });
+
 //change grid size with prompt
   $('#gridSize').on('click', function(){
+    $('.box').remove();
+    resetGrid();
     numBox = prompt('Choose a number from 1 to 64!');
     console.log(numBox);
     if(numBox < 1 || numBox > 64){
       numBox = 16;
     }
-    resetGrid();
-    $('.box').remove();
     createGrid(numBox);
   });
 
 //reset sketchpad on button click
   function resetGrid(){
     $('.box').css({'background-color': '#EDEDED'});
+    $('.box').off();
   }
-  $('#resetSketch').on('click', resetGrid);
-
 
 
   createGrid(numBox);
